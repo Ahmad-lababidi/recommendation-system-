@@ -10,18 +10,20 @@ The notebook loads MovieLens ratings, movies, and tags, preprocesses the data, c
 
 ## Models and Results
 
-- **ALS:** Hyperparameter search over latent factors, regularization, and confidence scaling. The reported unbiased test NDCG@10 is 0.0290 and Precision@10 is 0.0495.
-- **NCF:** PyTorch model with user/item embeddings and an MLP. The reported test RMSE is 0.8119.
-- A popularity baseline is included for cold-start users.
+| Model | What it does | Test result |
+|---|---|---|
+| **ALS** (`implicit`) | Matrix factorization with a hyperparameter search over latent factors, regularization and confidence scaling | NDCG@10 **0.0290** · Precision@10 **0.0495** |
+| **NCF** (PyTorch) | User and item embeddings fed into an MLP, trained with mixed precision | RMSE **0.8119** |
+| **Popularity baseline** | Fallback recommendations for cold-start users | — |
 
-These are the results currently documented in the project; the ALS ranking metric and NCF rating-prediction metric are different measures and should not be treated as a direct head-to-head comparison.
+ALS is scored on ranking and NCF on rating prediction, so the two numbers measure different things and are not a head-to-head comparison.
 
 ## 🚀 How to Run
 
 1. Clone the repository and install dependencies:
    ```bash
-   git clone https://github.com/Ahmad-lababidi/movielens-recommender-als-ncf.git
-   cd movielens-recommender-als-ncf
+   git clone https://github.com/Ahmad-lababidi/recommendation-system-.git
+   cd recommendation-system-
    pip install -r requirements.txt
    ```
 2. Download [MovieLens-25M](https://grouplens.org/datasets/movielens/25m/) and extract the dataset into an `ml-25m/` folder. Update the notebook's `PATH`, `OUT_PATH`, and `FIGURES_PATH` values to point to valid local folders.
